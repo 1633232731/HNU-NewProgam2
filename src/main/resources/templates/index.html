@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人员管理</title>
+</head>
+<body>
+
+<form align="center" action="/addOrUpdatePerson" method="post" onsubmit="return addCheck()">
+    <table border="1" align="center" width="600px">
+        <caption>数据库表person插入信息：(如果username已经存在， 执行更新数据，不存在则同时在users中插入新数据，默认密码888888</caption><!-- 表头 -->
+        <tr>
+            <td>username</td>
+            <td><input type="text" name="username" id="inputUsername"></td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td><input type="text" name="name" id="inputName"></td>
+        </tr>
+        <tr>
+            <td>age</td>
+            <td><input type="number" name="age" min="0" max="150" id="inputAge"></td>
+        </tr>
+        <tr>
+            <td>teleno</td>
+            <td><input type="tel" name="teleno" id="inputTeleno"></td>
+        </tr>
+    </table>
+    <input style="margin: 10px 0 10px 0" type="submit" value="插入/修改">
+</form>
+<form align="center" action="/deletePersonAndUser" method="post" onsubmit="return deleteCheck()">
+    <table border="1" align="center" width="600px">
+        <caption>数据库表依据username删除信息：</caption><!-- 表头 -->
+        <tr>
+            <td>username</td>
+            <td><input type="text" name="username"></td>
+        </tr>
+    </table>
+    <input style="margin-top: 10px" type="submit" value="删除">
+</form>
+<script type="text/javascript">
+    function deleteCheck(){
+        return confirm("确认删除？");
+    }
+    function addCheck(){
+        var teleReg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
+        const checkTeleno = teleReg.test(document.getElementById("inputTeleno").value)
+        const usernameCheck = (document.getElementById("inputUsername").value.length <= 10)
+        const nameCheck = (document.getElementById("inputName").value.length <= 20)
+        if(!checkTeleno){
+            alert("手机号不符合规范")
+            return false
+        }
+        if(!usernameCheck){
+            alert("username太长")
+            return false
+        }
+        if(!nameCheck){
+            alert("name太长")
+            return false
+        }
+        const check = confirm("确认新增/修改？");
+        return (check && checkTeleno && usernameCheck && nameCheck)
+
+    }
+</script>
+</body>
+</html>

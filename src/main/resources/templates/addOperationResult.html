@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>数据库操作结果</title>
+
+    <!--script th:inline="javascript">
+        /*function showMessage() {
+            document.getElementById("person").innerHTML = "Thymeleaf String by JS: " + [[${username}]];
+        }*/
+    </script-->
+</head>
+<body>
+    <div align="center">
+        <text style="size: 20px;font-weight: bolder" >操作结果</text>
+        <div>
+            <span>username: </span>
+            <text th:text="${person.username}"></text>
+            <!--p id="username"></p-->
+        </div>
+        <div>
+            <span>name: </span>
+            <text th:text="${person.name}"></text>
+        </div>
+        <div>
+            <span>age: </span>
+            <text th:text="${person.age}"></text>
+        </div>
+        <div>
+            <span>teleno: </span>
+            <text th:text="${person.teleno}"></text>
+        </div>
+        <a href="/databaseDetail">查看数据库数据</a>
+    </div>
+</body>
+</html>

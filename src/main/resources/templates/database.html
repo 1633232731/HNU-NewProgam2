@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>数据库详情</title>
+
+</head>
+<link rel="stylesheet" type="text/css" href="css/allCSS.css">
+<script src="js/showDatabase.js"></script>
+<body onload="getMapping()">
+
+
+<script th:inline="javascript">
+    function getPersonMapping() {
+        const tableHeader = ["username", "name", "age", "teleno"]
+        showDatabase([[${data.person}]], "person", tableHeader)
+    }
+
+    //document.getElementById("demo").innerHTML = getPersonMapping();
+
+    function getUsersMapping() {
+        const tableHeader = ["username", "pass"]
+        showDatabase([[${data.users}]], "users", tableHeader)
+    }
+</script>
+
+
+<div id="link">
+    <a th:href="@{/index}">返回主页面</a>
+</div>
+
+</body>
+</html>
